@@ -124,10 +124,23 @@ function findById(movieList, id) {
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
+function capitalize (genre) {
+  let genreArr = genre.toLowerCase().split('');
+  let firstLetterCap = genreArr.shift().toUpperCase();
+  let capGenre = firstLetterCap + genreArr.join('');
+  return capGenre;  
+}
+
 function filterByGenre(movieList, genre) {
+  if (!movieList.length){
+    throw 'Error: No movies found';
+  }
+
   let filteredMovies = movieList.filter(el => {
-    return el.genre === genre
-  })
+    return el.genre.includes(capitalize(genre));
+  });
+
+  return filteredMovies;
 }
 
 /**
