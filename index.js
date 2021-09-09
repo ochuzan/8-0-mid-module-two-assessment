@@ -215,8 +215,12 @@ function getRottenTomatoesScoreByMovie(movieList) {
     throw 'Error: No movies found';
   }
 
+  
   let newArr = movieList.map(el => {
-    return {[el.title] : el.ratings[0].value};
+    let ratingObj = el.ratings.find((el => {
+      return el.source === 'Rotten Tomatoes';
+    }))
+    return {[el.title] : ratingObj.value};
     });
   return newArr;
 }
