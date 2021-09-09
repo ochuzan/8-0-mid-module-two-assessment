@@ -210,7 +210,16 @@ function getAllMoviesReleasedAtOrBeforeYear(movieList, year) {
       { "James and the Giant Peach": "91%" },
     ];
  */
-function getRottenTomatoesScoreByMovie() {}
+function getRottenTomatoesScoreByMovie(movieList) {
+  if (!movieList.length){
+    throw 'Error: No movies found';
+  }
+
+  let newArr = movieList.map(el => {
+    return {[el.title] : el.ratings[0].value};
+    });
+  return newArr;
+}
 
 // Do not change anything below this line.
 module.exports = {
